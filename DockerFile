@@ -1,0 +1,9 @@
+FROM java:8
+
+# No need to run with root privileges
+RUN addgroup -S ubuntu && adduser -S ubuntu -G spring
+USER ubuntu:ubuntu
+
+EXPOSE 8080
+ADD /target/truckmonitor.jar truckmonitor.jar
+ENTRYPOINT ["java", "-jar", "truckmonitor.jar"]
